@@ -1,47 +1,53 @@
 #include <iostream>
-
+#include "funciones.h"
 using namespace std;
 
 int main()
 {
-   int  tam;
-   cout<<"Ingrese el tamanio del array : " << endl;
-   cin>>tam;
 
-   //Declaracion e inicializacion :
+    int opcion = 0;
+    int *v = nullptr;
+    int tam = 0;
 
-   int *vec = nullptr;
+    while(opcion != -1)
+    {
+        system("clear");
+        MostrarMenu();
+        cin>>opcion;
 
-   //Asignacion de memoria dinamica :
+        switch (opcion)
+        {
+        case 1:
+        {
+            CargarVector(v, tam);
+            Pausar();
+        }
+        break;
 
-   vec = new int[tam];
+        case 2:
+        {
+            MostrarVector(v, tam);
+            Pausar();
+        }
+        break;
 
-   //Validacion de la asignacion de memoria :
-   if (vec == nullptr){
+        case -1:
+        {
+            cout << "Saliendo..." << endl;
+        }
+        break;
 
-     cout<<"Error de asignaciond de memoria.." << endl;
+        default:
+        {
+            cout << "Opcion invalida." << endl;
+            Pausar();
+        }
+        break;
+        }
+    }
 
-     return -1;
-   }
-
-   //Cargar los datos :
-   for(int i = 0; i < tam ; i++)
-   {
-       cout<<"Ingrese el valor para la posicion : ";
-       cin>> vec[i];
-
-   }
-
-   cout<<"Elementos del vector dinamico "<< endl;
-   for(int i = 0; i < tam ; i++)
-   {
-       cout<<"Posicion : " << vec[i] <<endl;
-   }
-
-   //Liberacion de memoria :
-
-   delete [] vec;
-   vec =  nullptr;
+    if (v != nullptr)
+        delete[] v;
 
     return 0;
 }
