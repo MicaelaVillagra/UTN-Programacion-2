@@ -1,10 +1,4 @@
-
-*.exe
-*.out
-*.o
-*.obj
-*.cbp
-*.layout
-*.depend
 bin/
 obj/
+*.layout
+*.depend
